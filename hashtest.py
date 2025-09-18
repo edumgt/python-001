@@ -1,6 +1,6 @@
 # HashSetExample.py
 
-def main():
+def get_fruits_info():
     # set 생성
     fruits = set()
 
@@ -8,20 +8,23 @@ def main():
     fruits.add("Apple")
     fruits.add("Banana")
     fruits.add("Orange")
-    fruits.add("Apple")  # 이미 있는 값이면 무시됨 (중복 저장 안됨)
+    fruits.add("Apple")  # 중복 무시
 
-    # 크기 확인
-    print("과일 개수:", len(fruits))  # 4
+    info = {}
+    info["초기_과일_개수"] = len(fruits)
+    info["초기_과일_목록"] = list(fruits)  # set → list 변환
+    info["Banana_포함"] = "Banana" in fruits
 
-    # 출력 (순서는 보장되지 않음)
-    print("과일 목록:", fruits)
-
-    # 포함 여부 확인
-    print("Banana 포함?", "Banana" in fruits)
-
-    # 요소 제거
+    # Orange 제거
     fruits.remove("Orange")
-    print("Orange 제거 후:", fruits)
+    info["Orange_제거_후"] = list(fruits)
+
+    return info
+
+
+def main():
+    result = get_fruits_info()
+    print("HashSetExample 실행 결과:", result)
 
 
 if __name__ == "__main__":
